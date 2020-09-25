@@ -11,9 +11,19 @@ A WordPress theme will typically enqueue assets using the [`wp_enqueue_style`](h
 ```php
 function my_theme_enqueue_assets() {
 	// Load the theme stylesheet.
-	wp_enqueue_style( 'my-theme', get_stylesheet_directory_uri() . '/style.css', array(), '1.0' );
+	wp_enqueue_style(
+		'my-theme',
+		get_stylesheet_directory_uri() . '/style.css',
+		array(),
+		'1.0'
+	);
 	// Load the webfont.
-	wp_enqueue_style( 'literata', 'https://fonts.googleapis.com/css2?family=Literata&display=swap', array(), '1.0' );
+	wp_enqueue_style(
+		'literata',
+		'https://fonts.googleapis.com/css2?family=Literata&display=swap',
+		array(),
+		'1.0'
+	);
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_assets' );
 ```
@@ -24,9 +34,17 @@ function my_theme_enqueue_assets() {
 	// Include the file.
 	require_once get_theme_file_path( 'inc/wptt-webfont-loader.php' );
 	// Load the theme stylesheet.
-	wp_enqueue_style( 'my-theme', get_stylesheet_directory_uri() . '/style.css', array(), '1.0' );
+	wp_enqueue_style(
+		'my-theme',
+		get_stylesheet_directory_uri() . '/style.css',
+		array(),
+		'1.0'
+	);
 	// Load the webfont.
-	wp_add_inline_style( 'my-theme', wptt_get_webfont_styles( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' ) );
+	wp_add_inline_style(
+		'my-theme',
+		wptt_get_webfont_styles( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' )
+	);
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_assets' );
 ```
