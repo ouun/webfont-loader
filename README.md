@@ -54,3 +54,18 @@ The `wptt_get_webfont_styles` will - by default - download `.woff2` files. Howev
 ```php
 wptt_get_webfont_styles( 'https://fonts.googleapis.com/css2?family=Literata&display=swap', 'woff' );
 ```
+
+## Storing In A Custom Directory
+If you have the need to store font files in a custom directory you can pass a new path through to the `wptt_get_local_fonts_directory_path` filter. The value passed should not include the end folder. If you want to rename the end folder used you can pass a new name through to the `wptt_get_local_fonts_directory_folder` filter. Be sure you add these filters **BEFORE** the file containing the `WPTT_WebFont_Loader` class is called.
+
+```php
+// set a new path where the fonts folder will exist/be created.
+add_filter( 'wptt_get_local_fonts_directory_path', function() {
+	return '/new/path/for/storage';
+});
+
+// set a new folder to save fonts in.
+add_filter( 'wptt_get_local_fonts_directory_folder' function() {
+	return 'new-fonts-folder';
+});
+```
