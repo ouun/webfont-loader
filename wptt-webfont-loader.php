@@ -27,6 +27,39 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		public $font_format = 'woff2';
 
 		/**
+		 * The full path, including folder name, where the fonts are stored.
+		 *
+		 * @access protected
+		 *
+		 * @since 1.1.0
+		 *
+		 * @var string
+		 */
+		protected $fonts_directory;
+
+		/**
+		 * Holds the local fonts directory once it is set.
+		 *
+		 * @access protected
+		 *
+		 * @since 1.1.0
+		 *
+		 * @var string
+		 */
+		protected $fonts_directory_path;
+
+		/**
+		 * Holds the folder name where fonts are stored.
+		 *
+		 * @access protected
+		 *
+		 * @since 1.1.0
+		 *
+		 * @var string
+		 */
+		protected $fonts_directory_folder;
+
+		/**
 		 * Get styles from URL.
 		 *
 		 * @access public
