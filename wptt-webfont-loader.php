@@ -115,7 +115,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			// Convert paths to URLs.
 			foreach ( $files as $remote => $local ) {
-				$files[ $remote ] = str_replace( WP_CONTENT_DIR, content_url(), $local );
+				$files[ $remote ] = str_replace( $this->fonts_directory_path, content_url(), $local );
 			}
 
 			return str_replace(
@@ -142,14 +142,14 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			$change     = false; // If in the end this is true, we need to update the cache option.
 
 			// If the fonts folder don't exist, create it.
-			if ( ! file_exists( WP_CONTENT_DIR . '/fonts' ) ) {
-				$this->get_filesystem()->mkdir( WP_CONTENT_DIR . '/fonts', FS_CHMOD_DIR );
+			if ( ! file_exists( $this->fonts_directory ) ) {
+				$this->get_filesystem()->mkdir( $this->fonts_directory, FS_CHMOD_DIR );
 			}
 
 			foreach ( $font_files as $font_family => $files ) {
 
 				// The folder path for this font-family.
-				$folder_path = WP_CONTENT_DIR . '/fonts/' . $font_family;
+				$folder_path = wp_slash( $this->fonts_directory ) . $font_family;
 
 				// If the folder doesn't exist, create it.
 				if ( ! file_exists( $folder_path ) ) {
