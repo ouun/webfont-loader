@@ -84,7 +84,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_local_files_from_css( $css ) {
 			$font_files = $this->get_files_from_css( $css );
-			$stored     = get_option( 'downloaded_font_files', array() );
+			$stored     = get_site_option( 'downloaded_font_files', array() );
 			$change     = false; // If in the end this is true, we need to update the cache option.
 
 			// If the fonts folder don't exist, create it.
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 
 			// If there were changes, update the option.
 			if ( $change ) {
-				update_option( 'downloaded_font_files', $stored );
+				update_site_option( 'downloaded_font_files', $stored );
 			}
 
 			return $stored;
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			// Try to retrieved cached response from the gfonts API.
 			$contents       = false;
 			$transient_name = 'url_contents_' . md5( $url );
-			$contents       = get_transient( $transient_name );
+			$contents       = get_site_transient( $transient_name );
 
 			// If the transient is empty we need to get contents from the remote URL.
 			if ( ! $contents ) {
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 				// We're using a transient and not an option because fonts get updated
 				// so we want to be able to get the latest version weekly.
 				if ( $contents ) {
-					set_transient( $transient_name, $contents, WEEK_IN_SECONDS );
+					set_site_transient( $transient_name, $contents, WEEK_IN_SECONDS );
 				}
 			}
 
