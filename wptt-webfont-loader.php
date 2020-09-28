@@ -60,9 +60,10 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		protected $fonts_directory_folder;
 
 		/**
-		 * Gets the local fonts directory from protected class property. It the
-		 * provate property is not set when this is called it passed a default
-		 * value through the `wptt_get_local_fonts_directory` filter to set it.
+		 * Gets the local fonts directory from protected class property. If the
+		 * property is not set when this is called it passes a default value
+		 * through filters for the `wptt_get_local_fonts_directory_path` & the
+		 * `wptt_get_local_fonts_directory_folder` to set it.
 		 *
 		 * @method get_local_fonts_directory
 		 * @since  1.1.0
