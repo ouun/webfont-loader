@@ -60,6 +60,27 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		protected $fonts_directory_folder;
 
 		/**
+		 * Gets the local fonts directory from protected class property. It the
+		 * provate property is not set when this is called it passed a default
+		 * value through the `wptt_get_local_fonts_directory` filter to set it.
+		 *
+		 * @method get_local_fonts_directory
+		 * @since  1.1.0
+		 * @return string
+		 */
+		public function get_local_fonts_directory() {
+			if ( ! isset( $this->fonts_directory ) ) {
+				// The fonts_directory is not set. Set it passing through some
+				// filters to allow modification at runtime.
+				$this->fonts_directory_path   = (string) apply_filters( 'wptt_get_local_fonts_directory_path', WP_CONTENT_DIR );
+				$this->fonts_directory_folder = (string) apply_filters( 'wptt_get_local_fonts_directory_folder', 'fonts' );
+
+				$this->fonts_directory = wp_slash( $this->fonts_directory_path ) . $this->fonts_directory_folder;
+			}
+			return $this->fonts_directory;
+		}
+
+		/**
 		 * Get styles from URL.
 		 *
 		 * @access public
