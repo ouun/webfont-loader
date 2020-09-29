@@ -41,18 +41,36 @@ function my_theme_enqueue_assets() {
 		'1.0'
 	);
 	// Load the webfont.
-	wp_add_inline_style(
-		'my-theme',
-		wptt_get_webfont_styles( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' )
+	wp_enqueue_style(
+		'literata',
+		wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' );
+		array(),
+		'1.0'
 	);
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_assets' );
 ```
 
+## Available functions
+
+### `wptt_get_webfont_styles`
+```
+$remote_url = 'https://fonts.googleapis.com/css2?family=Literata&display=swap';
+$contents   = wptt_get_webfont_styles( $remote_url );
+```
+Returns the stylesheet contents, using locally hosted webfonts.
+
+### `wptt_get_webfont_url`
+```
+$remote_url = 'https://fonts.googleapis.com/css2?family=Literata&display=swap';
+$contents   = wptt_get_webfont_url( $remote_url );
+```
+Returns a stylesheet URL, locally-hosted.
+
 ## Supporting IE
-The `wptt_get_webfont_styles` will - by default - download `.woff2` files. However, if you need to support IE you will need to use `.woff` files instead. To do that, you can pass `woff` as the 2nd argument in the `wptt_get_webfont_styles` function:
+The `wptt_get_webfont_url` will - by default - download `.woff2` files. However, if you need to support IE you will need to use `.woff` files instead. To do that, you can pass `woff` as the 2nd argument in the `wptt_get_webfont_url` function:
 ```php
-wptt_get_webfont_styles( 'https://fonts.googleapis.com/css2?family=Literata&display=swap', 'woff' );
+wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Literata&display=swap', 'woff' );
 ```
 
 ## Storing In A Custom Directory
