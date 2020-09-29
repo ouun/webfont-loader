@@ -1,5 +1,5 @@
 {
-    "name": "wptt/font-loader",
+    "name": "wptt/webfont-loader",
     "type": "package",
     "description": "Locally host webfonts.",
     "keywords": [
