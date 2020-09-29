@@ -34,6 +34,33 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		protected $remote_url;
 
 		/**
+		 * Base path.
+		 *
+		 * @access protected
+		 * @since 1.0.1
+		 * @var string
+		 */
+		protected $base_path;
+
+		/**
+		 * Base URL.
+		 *
+		 * @access protected
+		 * @since 1.0.1
+		 * @var string
+		 */
+		protected $base_url;
+
+		/**
+		 * Subfolder name.
+		 *
+		 * @access protected
+		 * @since 1.0.1
+		 * @var string
+		 */
+		protected $subfolder_name;
+
+		/**
 		 * The fonts folder.
 		 *
 		 * @access protected
@@ -136,8 +163,8 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		public function get_local_stylesheet_url() {
 			if ( ! $this->local_stylesheet_url ) {
 				$this->local_stylesheet_url = str_replace(
-					$this->get_filesystem()->wp_content_dir(),
-					content_url(),
+					$this->get_base_path(),
+					$this->get_base_url(),
 					$this->get_local_stylesheet_path()
 				);
 			}
@@ -168,8 +195,8 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			// Convert paths to URLs.
 			foreach ( $files as $remote => $local ) {
 				$files[ $remote ] = str_replace(
-					$this->get_filesystem()->wp_content_dir(),
-					content_url(),
+					$this->get_base_path(),
+					$this->get_base_url(),
 					$local
 				);
 			}
@@ -460,7 +487,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * @return string
 		 */
 		public function get_local_stylesheet_filename() {
-			return md5( site_url() . $this->get_filesystem()->wp_content_dir() . $this->remote_url );
+			return md5( $this->get_base_url() . $this->get_base_path() . $this->remote_url );
 		}
 
 		/**
@@ -487,6 +514,48 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		}
 
 		/**
+		 * Get the base path.
+		 *
+		 * @access public
+		 * @since 1.0.1
+		 * @return string
+		 */
+		public function get_base_path() {
+			if ( ! $this->base_path ) {
+				$this->base_path = apply_filters( 'wptt_get_local_fonts_base_path', $this->get_filesystem()->wp_content_dir() );
+			}
+			return $this->base_path;
+		}
+
+		/**
+		 * Get the base URL.
+		 *
+		 * @access public
+		 * @since 1.0.1
+		 * @return string
+		 */
+		public function get_base_url() {
+			if ( ! $this->base_url ) {
+				$this->base_url = apply_filters( 'wptt_get_local_fonts_base_url', content_url() );
+			}
+			return $this->base_url;
+		}
+
+		/**
+		 * Get the subfolder name.
+		 *
+		 * @access public
+		 * @since 1.0.1
+		 * @return string
+		 */
+		public function get_subfolder_name() {
+			if ( ! $this->subfolder_name ) {
+				$this->subfolder_name = apply_filters( 'wptt_get_local_fonts_subfolder_name', 'fonts' );
+			}
+			return $this->subfolder_name;
+		}
+
+		/**
 		 * Get the folder for fonts.
 		 *
 		 * @access public
@@ -494,7 +563,10 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_fonts_folder() {
 			if ( ! $this->fonts_folder ) {
-				$this->fonts_folder = $this->get_filesystem()->wp_content_dir() . '/fonts';
+				$this->fonts_folder = $this->get_base_path();
+				if ( $this->get_subfolder_name() ) {
+					$this->fonts_folder .= '/' . $this->get_subfolder_name();
+				}
 			}
 			return $this->fonts_folder;
 		}
