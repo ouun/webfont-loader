@@ -28,7 +28,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The remote URL.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $remote_url;
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Base path.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $base_path;
@@ -46,7 +46,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Base URL.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $base_url;
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Subfolder name.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $subfolder_name;
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The fonts folder.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $fonts_folder;
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The local stylesheet's path.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $local_stylesheet_path;
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The local stylesheet's URL.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $local_stylesheet_url;
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The remote CSS.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $remote_styles;
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * The final CSS.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @var string
 		 */
 		protected $css;
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get a new instance of the object for a new URL.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @param string $url The remote URL.
 		 */
 		public function __construct( $url = '' ) {
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Fallback to the remote URL if we were unable to write the file locally.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_url() {
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get the local stylesheet URL.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_local_stylesheet_url() {
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get local stylesheet contents.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string|false Returns the remote URL contents.
 		 */
 		public function get_local_stylesheet_contents() {
@@ -431,7 +431,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Write the CSS to the filesystem.
 		 *
 		 * @access protected
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string|false Returns the absolute path of the file on success, or false on fail.
 		 */
 		protected function write_stylesheet() {
@@ -466,7 +466,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get the stylesheet path.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_local_stylesheet_path() {
@@ -483,7 +483,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * This way we can avoid issues with sites changing their URL, or the wp-content path etc.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_local_stylesheet_filename() {
@@ -506,7 +506,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Check if the local stylesheet exists.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return bool
 		 */
 		public function local_file_exists() {
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get the base path.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_base_path() {
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get the base URL.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_base_url() {
@@ -545,7 +545,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * Get the subfolder name.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return string
 		 */
 		public function get_subfolder_name() {
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * and we avoid edge cases where unused files remain in the server.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return void
 		 */
 		public function schedule_cleanup() {
@@ -596,7 +596,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 * This runs as part of a cleanup routine.
 		 *
 		 * @access public
-		 * @since 1.0.1
+		 * @since 1.1.0
 		 * @return bool
 		 */
 		public function delete_fonts_folder() {
@@ -652,7 +652,7 @@ if ( ! function_exists( 'wptt_get_webfont_url' ) ) {
 	/**
 	 * Get a stylesheet URL for a webfont.
 	 *
-	 * @since 1.0.1
+	 * @since 1.1.0
 	 *
 	 * @param string $url    The URL of the remote webfont.
 	 * @param string $format The font-format. If you need to support IE, change this to "woff".
