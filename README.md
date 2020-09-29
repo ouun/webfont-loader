@@ -85,7 +85,7 @@ If you have the need to store font files in a custom directory you can pass a cu
  */
 add_filter( 'wptt_get_local_fonts_base_path', function( $path ) {
 	return WP_CONTENT_DIR;
-}
+} );
 
 /**
  * Change the base URL.
@@ -95,7 +95,7 @@ add_filter( 'wptt_get_local_fonts_base_path', function( $path ) {
  */
 add_filter( 'wptt_get_local_fonts_base_url', function( $url ) {
 	return content_url();
-}
+} );
 
 /**
  * Change the subfolder name.
@@ -105,5 +105,5 @@ add_filter( 'wptt_get_local_fonts_base_url', function( $url ) {
  */
 add_filter( 'wptt_get_local_fonts_subfolder_name', function( $subfolder_name ) {
 	return 'fonts';
-}
+} );
 ```
