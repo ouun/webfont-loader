@@ -43,7 +43,7 @@ function my_theme_enqueue_assets() {
 	// Load the webfont.
 	wp_enqueue_style(
 		'literata',
-		wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' );
+		wptt_get_webfont_url( 'https://fonts.googleapis.com/css2?family=Literata&display=swap' ),
 		array(),
 		'1.0'
 	);
