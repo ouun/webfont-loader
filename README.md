@@ -68,7 +68,7 @@ $contents   = wptt_get_webfont_url( $remote_url );
 Returns a stylesheet URL, locally-hosted.
 
 ## Build url for multiple fonts
-```
+```php
 $font_families = array(
 	'Quicksand:wght@300;400;500;600;700',
 	'Work+Sans:wght@300;400;500;600;700'
