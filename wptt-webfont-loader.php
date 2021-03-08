@@ -283,6 +283,10 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			$font_files = $this->get_remote_files_from_css();
 			$stored     = get_site_option( 'downloaded_font_files', array() );
 			$change     = false; // If in the end this is true, we need to update the cache option.
+			
+			if ( ! defined( 'FS_CHMOD_DIR' ) ) {
+				define( 'FS_CHMOD_DIR', ( 0755 & ~ umask() ) );
+			}
 
 			// If the fonts folder don't exist, create it.
 			if ( ! file_exists( $this->get_fonts_folder() ) ) {
@@ -434,6 +438,10 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		protected function write_stylesheet() {
 			$file_path  = $this->get_local_stylesheet_path();
 			$filesystem = $this->get_filesystem();
+			
+			if ( ! defined( 'FS_CHMOD_DIR' ) ) {
+				define( 'FS_CHMOD_DIR', ( 0755 & ~ umask() ) );
+			}
 
 			// If the folder doesn't exist, create it.
 			if ( ! file_exists( $this->get_fonts_folder() ) ) {
