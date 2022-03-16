@@ -13,6 +13,11 @@
             "homepage": "https://github.com/WPTT/font-loader/graphs/contributors"
         }
     ],
+    "autoload": {
+    "files": [
+        "wptt-webfont-loader.php"
+      ]
+    },
     "require": {
         "php": ">=5.6"
     },
